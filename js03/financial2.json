@@ -50,13 +50,13 @@
         }
     },
     {
-        "index": 5,
-        "_id": "5c01097ee8822e5fb2ba30a6",
-        "cost": "310.46",
+        "index": 46,
+        "_id": "5c01097ed8adeffaf56be5d2",
+        "cost": 729,
         "detailsOfPayent": {
-            "Type": 4,
-            "company": "CODAX",
-            "date": "06-04-2015"
+            "Type": 2,
+            "company": "MANGELICA",
+            "date": "13-05-2015"
         }
     }
 ]

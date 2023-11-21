@@ -4,48 +4,57 @@ const people2 = require("./sw-people.json");
 const starships = require("./sw-starships.json");
 
 // count sum of all starships cost from episodes 4-6
-console.log(
-    "Sum of all starships cost from episodes 4 - 6 is: " +
-    sumAllStarshipsCostFromEpisodes(4, 6)
-);
+// console.log(
+//     "Sum of all starships cost from episodes 4 - 6 is: " +
+//     sumAllStarshipsCostFromEpisodes(4, 6)
+// );
+
+// console.log(sumAllStarshipsCostFromEpisodes(4, 6))
+
+function sumAllStarshipsCostFromEpisodes2(startEp, endEp) {
+    let sum = 0;
+    return starships
+        .map((starship) => {
+            return starship.cost_in_credits
+        })
+}
 
 function sumAllStarshipsCostFromEpisodes(startEp, endEp) {
     let sum = 0;
-    starships
-        .filter((starship) => {
-            return /^[0-9]+$/.test(starship.cost_in_credits);
+    films
+        .filter(film => {
+            return film.episode_id >= startEp && film.episode_id <= endEp;
         })
-        .map(starship => starship.films.map(filmId => ({ starship, filmId })))
-        .flat()
-        .forEach(({ starship, filmId }) => {
-            const episodeId =  filmId
-                .replace("https://swapi.dev/api/films/", "")
-                .replace("/", "");
-            if (+episodeId >= startEp && +episodeId <= endEp) {
+        .flatMap(film => film.starships)
+        .forEach(url => {
+            const starship = starships.find(starship => starship.url === url);
+            if (/^[0-9]+$/.test(starship.cost_in_credits)) {
                 sum += parseInt(starship.cost_in_credits);
             }
-        });
+        })
     return sum;
 }
 
 // find the fastest starship you can afford having 8500000 credits
 
-console.log(
-    "Fastest ship I can get for up to 8500000 is: " +
-    getFastestShipFor(8500000).name
-);
+// console.log(
+//     "Fastest ship I can get for up to 8500000 is: " +
+//     getFastestShipFor(8500000)
+// );
 
 
 function getFastestShipFor(money) {
-    let ship = starships
-        .filter((starship) => {
-            return /^[0-9]+$/.test(starship.cost_in_credits);
+    return starships
+        .filter(starship => {
+            return /^[0-9]+$/.test(starship.cost_in_credits)
+                && /^[0-9]+$/.test(starship.max_atmosphering_speed)
+                && starship.cost_in_credits <= money;
         })
-        .filter((starship) => {
-            return starship.cost_in_credits <= money;
+        .sort((a, b) => b.max_atmosphering_speed - a.max_atmosphering_speed)
+        .filter((starship, index, array) => {
+            return starship.max_atmosphering_speed === array[0].max_atmosphering_speed;
         })
-        .sort((a, b) => a.max_atmosphering_speed - b.max_atmosphering_speed)[0];
-    return ship;
+        .map(starship => starship.name)
 }
 
 // find planet name with the lowest difference between the rotation period and orbital period
@@ -56,19 +65,17 @@ console.log(
 );
 
 function getPlanetNameWithLowestDifference(key1, key2) {
-    let planetName;
-    planetName = planets
-        .filter((value) => {
-            return /^[0-9]+$/.test(value[key1]) || /^[0-9]+$/.test(value[key2]);
-        }).filter((value) => {
-            return value[key1] > 0 || value[key2] > 0;
+    return planets
+        .filter(planet => {
+            return (/^[0-9]+$/.test(planet[key1])
+                    || /^[0-9]+$/.test(planet[key2]))
+                && (planet[key1] > 0 || planet[key2] > 0);
         })
-        .map(value => {
-            let diff = Math.abs(value[key2] - value[key1]);
-            return {diff, res: value.name}
+        .map(planet => {
+            let diff = Math.abs(planet[key1] - planet[key2]);
+            return {diff, name: planet.name}
         })
-        .sort((a, b) => a.diff - b.diff)[0].res;
-    return planetName;
+        .sort((a, b) => a.diff - b.diff)[0].name;
 }
 
 // map all starships with crew <= 4 that were created between 10 dec 2014 and 15 dec 2014
@@ -79,52 +86,63 @@ console.log(
 );
 
 function getCrewShipFrom(maxCrew, dateStart, dateEnd) {
-    let ship;
-    ship = starships
+    return starships
         .filter((starship) => {
             let crewFormatted = starship.crew.replace(/[.,-]/g, '');
             return /^[0-9]+$/.test(crewFormatted)
                 && crewFormatted <= maxCrew
-                && (new Date(starship.created).getTime() < dateEnd.getTime())
-                && (new Date(starship.created).getTime() > dateStart.getTime())
-        }).map((starship) => {
+                && (new Date(starship.created).getTime() <= dateEnd.getTime())
+                && (new Date(starship.created).getTime() >= dateStart.getTime())
+        })
+        .map((starship) => {
             return {
                 crew: starship.crew,
                 created: new Date(starship.created)
             }
-        })
-    return ship;
+        });
 }
 
 // create an array of people’s names from episodes 1 and 5 sorted by the diameter of origin planet low to high
 
 console.log(
-    // "People from ep 1 - 5 sorted by origin planet diameter low to high: " +
+//     // "People from ep 1 - 5 sorted by origin planet diameter low to high: " +
     getPeopleSortedByOriginPlanetDiameter(1, 5)
 );
 
 function getPeopleSortedByOriginPlanetDiameter(startEp, endEp) {
     let people;
-    people = Array.from(new Set(films
+    // people = Array.from(new Set(
+    return films
         .filter(film => film.episode_id >= startEp && film.episode_id <= endEp)
-        .map(film => film.characters)
-        .flat()
-        .map(characterUrl => people2.find(person => person.url === characterUrl))
-        .filter(person => person !== undefined && person !== null)
-        .map(person => {
-            const planet = planets.find(planet => planet.url === person.homeworld);
-            if (planet.diameter > 0 || /^[0-9]+$/.test(planet.diameter)) {
+        .flatMap(film => film.characters)
+        .filter((url, index, array) => {
+            return array.indexOf(url) === index
+        })
+    .map(characterUrl => {
+        const person = people2.find(person => person.url === characterUrl);
+        if (person) {
+
+        return {
+            name: person.name,
+            homeworld: person.homeworld
+        }
+        }
+    })
+    .map(person => {
+        const planet = planets.find(planet => planet.url === person.homeworld);
+
+        if (planet.diameter > 0 && /^[0-9]+$/.test(planet.diameter)) {
 
             return {
                 name: person.name,
                 diameter: planet.diameter
-            }
-            }
-        })
 
-        .sort((a, b) => b.diameter - a.diameter)
-));
-            // return Array.from(new Set(result))
+        }}
+    })
+
+    // .sort((a, b) => b.diameter - a.diameter)
+    // ));
+    // return Array.from(new Set(result))
 
     return people;
 }

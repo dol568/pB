@@ -1,20 +1,14 @@
-const financialData = require("./financial2.json");
+const financialData = require("./financial.json");
 
 function getMoneySpent() {
     return financialData.reduce((acc, data) => {
         const dateParts = data.detailsOfPayent.date.split("-");
-        const unixDate = new Date(dateParts[2], dateParts[1], dateParts[0]);
+        const unixDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
         if (unixDate.getFullYear() === 2014) {
             return acc + parseFloat(data.cost);
         }
         return acc;
-    }, 0);
-}
-
-function getMoneySpent2() {
-    return financialData.reduce((acc, data) => {
-        return acc + parseFloat(data.cost);
-    }, 0);
+    }, 0).toFixed(2);
 }
 
 function getEarningsPerCompany() {
@@ -24,8 +18,8 @@ function getEarningsPerCompany() {
         return {
             ...acc,
             [company]: acc[company]
-                ? acc[company] += parseFloat(cost)
-                : parseFloat(cost)
+                ? +(parseFloat(acc[company]) + parseFloat(cost)).toFixed(2)
+                : +parseFloat(cost).toFixed(2)
         }
     }, {});
 }
@@ -34,13 +28,11 @@ function getSpendingsPerTransactionType() {
     return financialData.reduce((acc, data) => {
         const {cost, detailsOfPayent} = data;
         const type = detailsOfPayent.Type;
-        const two2 = parseFloat(cost);
-
         return {
             ...acc,
             [type]: acc[type]
-                ? acc[type] += two2
-                : two2
+                ? +(parseFloat(acc[type]) + parseFloat(cost)).toFixed(2)
+                : +parseFloat(cost).toFixed(2)
         }
     }, {});
 }
@@ -50,12 +42,12 @@ function getMoneySpentByMonth() {
         const {cost} = data;
         const dateParts = data.detailsOfPayent.date.split("-");
         const unixDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-        const montAndYear = months[unixDate.getMonth()].concat(unixDate.getFullYear());
+        const montAndYear = months[unixDate.getMonth()].concat(" ").concat(unixDate.getFullYear());
         return {
             ...acc,
             [montAndYear]: acc[montAndYear]
-                ? acc[montAndYear] += parseFloat(cost)
-                : parseFloat(cost)
+                ? +(parseFloat(acc[montAndYear]) + parseFloat(cost)).toFixed(2)
+                : +parseFloat(cost).toFixed(2)
         }
     }, {});
 }
@@ -69,8 +61,8 @@ function getMoneySpentByDayOfTheWeek() {
         return {
             ...acc,
             [dayOfTheWeek]: acc[dayOfTheWeek]
-                ? acc[dayOfTheWeek] += parseFloat(cost)
-                : parseFloat(cost)
+                ? +(parseFloat(acc[dayOfTheWeek]) + parseFloat(cost)).toFixed(2)
+                : +parseFloat(cost).toFixed(2)
         }
     }, {});
 }
@@ -102,8 +94,7 @@ const days = {
 
 function getFiancialObject() {
     const financialObject = {};
-    financialObject["Money Spent In 2014"] = getMoneySpent().toFixed(2);
-    financialObject["Money Spent Total"] = getMoneySpent2().toFixed(2);
+    financialObject["Money Spent In 2014"] = getMoneySpent();
     financialObject["Spendings Per Transaction Type"] = getSpendingsPerTransactionType();
     financialObject["Earnings Per Company"] = getEarningsPerCompany();
     financialObject["Spendings By Month"] = getMoneySpentByMonth();
