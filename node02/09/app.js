@@ -1,5 +1,6 @@
-const yargs = require('yargs');
 const fs = require('fs');
+const path = require('path');
+const yargs = require('yargs');
 
 const argv = yargs
     .option('directory', {
@@ -11,15 +12,33 @@ const argv = yargs
         type: 'number'
     }).argv;
 
-let obj = fs.readdirSync(argv.directory).map(el => {
-    const stats = fs.statSync(el);
-    return { el: el, size: stats}
-}).sort((a, b) => b.size - a.size)
+let avg = 0;
+const files = fs.readdirSync(argv.directory);
 
-// if (argv.size) {
-//     obj = obj.filter(el => el.size > argv.size)
-// }
+const obj = files
+    .map(name => {
+        const filePath = path.join(argv.directory, name);
+        const stats = fs.statSync(filePath);
+        return { name: name, size: stats.size };
+    })
+    .sort((a, b) => b.size - a.size)
+    .filter(el => {
+        if (argv.size) {
+            return el.size > argv.size;
+        } else {
+            avg = files.reduce((acc, el) => {
+                const filePath = path.join(argv.directory, el);
+                const stats = fs.statSync(filePath);
+                return acc + stats.size;
+            }, 0) / files.length;
 
-console.log(obj)
+            return el.size > avg;
+        }
+    });
 
-// obj.forEach(el => console.log(el));
+if (argv.size) {
+    console.table(obj);
+} else {
+    console.log('mean file size: ' + avg);
+    console.table(obj);
+}
