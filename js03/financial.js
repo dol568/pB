@@ -1,10 +1,48 @@
 const financialData = require("./financial.json");
 
-function getMoneySpent() {
+const months = {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "September",
+    9: "October",
+    10: "November",
+    11: "December",
+}
+
+const days = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday"
+}
+
+function getFiancialObject() {
+    const financialObject = {};
+    financialObject["Money Spent In 2014"] = getMoneySpent(2014);
+    financialObject["Spendings Per Transaction Type"] = getSpendingsPerTransactionType();
+    financialObject["Earnings Per Company"] = getEarningsPerCompany();
+    financialObject["Spendings By Month"] = getMoneySpentByMonth();
+    financialObject["Spendings Per Day Of The Week"] = getMoneySpentByDayOfTheWeek();
+    return financialObject;
+}
+
+console.log("Financial data:");
+console.log(getFiancialObject());
+
+function getMoneySpent(year) {
     return financialData.reduce((acc, data) => {
         const dateParts = data.detailsOfPayent.date.split("-");
         const unixDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
-        if (unixDate.getFullYear() === 2014) {
+        if (unixDate.getFullYear() === year) {
             return acc + parseFloat(data.cost);
         }
         return acc;
@@ -66,41 +104,3 @@ function getMoneySpentByDayOfTheWeek() {
         }
     }, {});
 }
-
-const months = {
-    0: "January",
-    1: "February",
-    2: "March",
-    3: "April",
-    4: "May",
-    5: "June",
-    6: "July",
-    7: "August",
-    8: "September",
-    9: "October",
-    10: "November",
-    11: "December",
-}
-
-const days = {
-    0: "Sunday",
-    1: "Monday",
-    2: "Tuesday",
-    3: "Wednesday",
-    4: "Thursday",
-    5: "Friday",
-    6: "Saturday"
-}
-
-function getFiancialObject() {
-    const financialObject = {};
-    financialObject["Money Spent In 2014"] = getMoneySpent();
-    financialObject["Spendings Per Transaction Type"] = getSpendingsPerTransactionType();
-    financialObject["Earnings Per Company"] = getEarningsPerCompany();
-    financialObject["Spendings By Month"] = getMoneySpentByMonth();
-    financialObject["Spendings Per Day Of The Week"] = getMoneySpentByDayOfTheWeek();
-    return financialObject;
-}
-
-console.log("Financial data:");
-console.log(getFiancialObject());

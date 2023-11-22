@@ -83,14 +83,14 @@ console.log(
 
 function getCrewShipFrom(maxCrew, dateStart, dateEnd) {
     return starships
-        .filter((starship) => {
+        .filter(starship => {
             let crewFormatted = starship.crew.replace(/[.,-]/g, '');
             return /^[0-9]+$/.test(crewFormatted)
                 && crewFormatted <= maxCrew
                 && (new Date(starship.created).getTime() <= dateEnd.getTime())
                 && (new Date(starship.created).getTime() >= dateStart.getTime())
         })
-        .map((starship) => {
+        .map(starship => {
             return {
                 crew: starship.crew,
                 created: new Date(starship.created)
@@ -109,7 +109,7 @@ console.log(
 function getPeopleSortedByOriginPlanetDiameter(startEp, endEp) {
     return Array.from(
         films
-            .filter(film => film.episode_id >= startEp && film.episode_id <= endEp)
+            .filter(film => film.episode_id === startEp || film.episode_id === endEp)
             .flatMap(film => film.characters)
             .filter((url, index, array) => {
                 return array.indexOf(url) === index
@@ -124,7 +124,8 @@ function getPeopleSortedByOriginPlanetDiameter(startEp, endEp) {
                     }
                 }
             })
-            .filter(planet => planet.diameter > 0 && /^[0-9]+$/.test(planet.diameter))
+            .filter(planet => planet.diameter > 0 && /^[0-9]+$/.test(planet.diameter)
+                && planet.name !== 'unknown')
             .map(person => person.name)
             .sort((a, b) => a.diameter - b.diameter)
     );
