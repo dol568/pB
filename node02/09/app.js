@@ -12,33 +12,32 @@ const argv = yargs
         type: 'number'
     }).argv;
 
-let avg = 0;
 const files = fs.readdirSync(argv.directory);
 
 const obj = files
     .map(name => {
         const filePath = path.join(argv.directory, name);
         const stats = fs.statSync(filePath);
-        return { name: name, size: stats.size };
+        return {name: name, size: stats.size};
     })
+
+const avg = obj.reduce((acc, el) => {
+    return acc + el.size;
+}, 0) / files.length;
+
+const filteredAndSorted = obj
     .sort((a, b) => b.size - a.size)
     .filter(el => {
-        if (argv.size) {
+        if (argv.size !== undefined) {
             return el.size > argv.size;
         } else {
-            avg = files.reduce((acc, el) => {
-                const filePath = path.join(argv.directory, el);
-                const stats = fs.statSync(filePath);
-                return acc + stats.size;
-            }, 0) / files.length;
-
             return el.size > avg;
         }
     });
 
-if (argv.size) {
-    console.table(obj);
+if (argv.size !== undefined) {
+    console.table(filteredAndSorted);
 } else {
     console.log('mean file size: ' + avg);
-    console.table(obj);
+    console.table(filteredAndSorted);
 }
