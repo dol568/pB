@@ -10,7 +10,6 @@ console.log('\n' +
     sumAllStarshipsCostFromEpisodes(4, 6) + '\n'
 );
 
-
 function sumAllStarshipsCostFromEpisodes(startEp, endEp) {
     let sum = 0;
     films
@@ -31,7 +30,8 @@ function sumAllStarshipsCostFromEpisodes(startEp, endEp) {
 
 console.log(
     "Fastest ship I can get for up to 8500000 is: " +
-    getFastestShipFor(8500000) + '\n'
+    getFastestShipFor(8500000)
+    + '\n'
 );
 
 function getFastestShipFor(money) {
@@ -43,7 +43,7 @@ function getFastestShipFor(money) {
         })
         .sort((a, b) => b.max_atmosphering_speed - a.max_atmosphering_speed)
         .filter((starship, index, array) => {
-            return starship.max_atmosphering_speed === array[0].max_atmosphering_speed;
+            return index === 0 || starship.max_atmosphering_speed === array[0].max_atmosphering_speed;
         })
         .map(starship => starship.name)
 }
@@ -52,7 +52,8 @@ function getFastestShipFor(money) {
 
 console.log(
     "Planet name with the lowest difference between the rotation period and orbital period is: " +
-    getPlanetNameWithLowestDifference("rotation_period", "orbital_period") + '\n'
+    getPlanetNameWithLowestDifference("rotation_period", "orbital_period")
+    + '\n'
 );
 
 function getPlanetNameWithLowestDifference(key1, key2) {
@@ -68,7 +69,7 @@ function getPlanetNameWithLowestDifference(key1, key2) {
         })
         .sort((a, b) => a.diff - b.diff)
         .filter((planet, index, array) => {
-            return planet.name === array[0].name;
+            return planet.diff === array[0].diff;
         })
         .map(planet => planet.name)
 }
