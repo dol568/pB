@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * In this task you have to connect multiple pieces together
  * but the general plan is:
@@ -11,11 +13,9 @@
  * - fix some small errors, typos and etc... maybe use TypeScript for that
  *
  */
-import {Supermarket} from "./supermarket";
-import {products} from "./products";
-
-const supermarket = new Supermarket();
-supermarket.addSupplies(products);
+var supermarket_1 = require("./supermarket");
+var products_1 = require("./products");
+var supermarket = new supermarket_1.Supermarket();
+supermarket.addSupplies(products_1.products);
 supermarket.advertise();
-
-
+//# sourceMappingURL=task_5.js.map

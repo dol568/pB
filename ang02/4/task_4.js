@@ -1,17 +1,10 @@
-/**
- * ADDITIONALLY
- * how can we make item type checking more TypeScript style - hence typos safe
- * (what is a typo? typing 'backgroung' instead of 'background')
- */
-interface IProduct {
-    name: string,
-    taste?: string,
-    type?: Type
-}
-enum Type {
-    FRUIT, VEG
-}
-var items: IProduct[] = [];
+"use strict";
+var Type;
+(function (Type) {
+    Type[Type["FRUIT"] = 0] = "FRUIT";
+    Type[Type["VEG"] = 1] = "VEG";
+})(Type || (Type = {}));
+var items = [];
 items.push({
     name: 'Apple',
     taste: 'sweet',
@@ -29,7 +22,7 @@ items.push({
 items.push({
     name: 'Car'
 });
-function printFruitsAndVeggies(fruitsAndVeggies: IProduct[]) {
+function printFruitsAndVeggies(fruitsAndVeggies) {
     for (var _i = 0, fruitsAndVeggies_1 = fruitsAndVeggies; _i < fruitsAndVeggies_1.length; _i++) {
         var item = fruitsAndVeggies_1[_i];
         if (item.type === Type.FRUIT) {
@@ -46,3 +39,4 @@ function printFruitsAndVeggies(fruitsAndVeggies: IProduct[]) {
     }
 }
 printFruitsAndVeggies(items);
+//# sourceMappingURL=task_4.js.map

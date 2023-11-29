@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="09 refactor" />
+    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="first commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ang02/1/task_1.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ang02/1/task_1.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ang02/2/task_2.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ang02/2/task_2.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ang02/3/task_3.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ang02/3/task_3.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ang02/4/task_4.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ang02/4/task_4.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,21 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "ang02",
-    "last_opened_file_path": "C:/Users/dariu/OneDrive/Pulpit/pBa",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ang02&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dariu/OneDrive/Pulpit/pBa&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\node01" />
@@ -61,6 +68,7 @@
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\js01" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\ang02" />
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\node02" />
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\node02\04" />
     </key>
@@ -93,7 +101,9 @@
       <workItem from="1701152928529" duration="18000" />
       <workItem from="1701265777147" duration="27000" />
       <workItem from="1701265817312" duration="2138000" />
-      <workItem from="1701276024728" duration="649000" />
+      <workItem from="1701276024728" duration="797000" />
+      <workItem from="1701276853943" duration="21000" />
+      <workItem from="1701276891852" duration="479000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
@@ -247,14 +257,33 @@
       <option name="project" value="LOCAL" />
       <updated>1701276580111</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1701276724901</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1701276724901</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/ang02/1/task_1.js" />
+        <option value="$PROJECT_DIR$/ang02/1/task_1.js.map" />
+        <option value="$PROJECT_DIR$/ang02/2/task_2.js.map" />
+        <option value="$PROJECT_DIR$/ang02/2/task_2.js" />
+        <option value="$PROJECT_DIR$/ang02/3/task_3.js" />
+        <option value="$PROJECT_DIR$/ang02/3/task_3.js.map" />
+        <option value="$PROJECT_DIR$/ang02/4/task_4.js.map" />
+        <option value="$PROJECT_DIR$/ang02/4/task_4.js" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit" />
     <MESSAGE value="js01" />
     <MESSAGE value="js02" />
     <MESSAGE value="js03" />
@@ -269,6 +298,7 @@
     <MESSAGE value="refactored starwars.js 5" />
     <MESSAGE value="refactored starwars.js 6" />
     <MESSAGE value="09 refactor" />
-    <option name="LAST_COMMIT_MESSAGE" value="09 refactor" />
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>

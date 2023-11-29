@@ -3,7 +3,7 @@
  * if you didn't pay attention during the lecture
  *
  */
-let name;
+export let name: string;
 
 /**
  * Dont change anything below this line
