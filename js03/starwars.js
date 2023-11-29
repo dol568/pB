@@ -44,7 +44,7 @@ function getFastestShipFor(money) {
         })
         .sort((a, b) => b.max_atmosphering_speed - a.max_atmosphering_speed)
         .filter((starship, index, array) => {
-            return index === 0 || starship.max_atmosphering_speed === array[0].max_atmosphering_speed;
+            return starship.max_atmosphering_speed === array[0].max_atmosphering_speed;
         })
         .map(starship => starship.name)
 }
