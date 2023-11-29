@@ -2,6 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const yargs = require('yargs');
 
+function calculateAvgSize(obj) {
+    const totalSize = obj.reduce((acc, el) => acc + el.size, 0);
+    return totalSize / obj.length;
+}
+
 const argv = yargs
     .option('directory', {
         demandOption: true,
@@ -21,9 +26,7 @@ const obj = files
         return {name: name, size: stats.size};
     })
 
-const avg = obj.reduce((acc, el) => {
-    return acc + el.size;
-}, 0) / files.length;
+let avg;
 
 const filteredAndSorted = obj
     .sort((a, b) => b.size - a.size)
@@ -31,6 +34,7 @@ const filteredAndSorted = obj
         if (argv.size !== undefined) {
             return el.size > argv.size;
         } else {
+            avg = calculateAvgSize(obj);
             return el.size > avg;
         }
     });
