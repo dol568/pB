@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/js05/sudoku.js" beforeDir="false" afterPath="$PROJECT_DIR$/js05/sudoku.js" afterDir="false" />
-    </list>
+    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="update3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -302,7 +300,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701525050288</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="update2">
+      <option name="closed" value="true" />
+      <created>1704740646075</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1704740646075</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update3">
+      <option name="closed" value="true" />
+      <created>1704740661571</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704740661571</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,6 +352,8 @@
     <MESSAGE value="solutions" />
     <MESSAGE value="solutions2" />
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="update2" />
+    <MESSAGE value="update3" />
+    <option name="LAST_COMMIT_MESSAGE" value="update3" />
   </component>
 </project>
