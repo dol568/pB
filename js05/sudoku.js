@@ -15,21 +15,27 @@ class Sudoku {
             console.error('Board cannot be empty');
             return;
         }
+        for (let i = 0; i < newBoard.length; i++) {
+            for (let j = 0; j < newBoard[i].length; j++) {
+                const char = newBoard[i][j];
+                if (char !== this.#DOT_CHAR && !/^[1-9]$/.test(+char)) {
+                    console.error(`Invalid character '${char}' in the board. Only chars '1' to '9' are allowed.`);
+                    process.exit(1);
+                }
+            }
+        }
         this._board = newBoard;
+        console.log("Unsolved sudoku:")
         this.#print();
     }
 
     solve() {
-        if (!(this.board.length === 0)) {
-
-            if (this.#helper(0, 0)) {
-                console.log('Solved sudoku:');
-                this.#print();
-            } else {
-                console.log('Could not solve this sudoku puzzle');
-            }
+        if (this.#helper(0, 0)) {
+            console.log('Solved sudoku:');
+            this.#print();
+        } else {
+            console.log('Could not solve this sudoku puzzle');
         }
-
     }
 
     #helper(row, col) {
@@ -125,6 +131,5 @@ const example = [
 ]
 
 const sudoku = new Sudoku();
-// sudoku.board = example;
-sudoku.board = []
+sudoku.board = example;
 sudoku.solve();
