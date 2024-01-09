@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="update4">
-      <change afterPath="$PROJECT_DIR$/poker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sudoku.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js_zal/scale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/poker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js_zal/poker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sudoku.js" beforeDir="false" afterPath="$PROJECT_DIR$/js_zal/sudoku.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,23 +43,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "js__zal",
-    "last_opened_file_path": "C:/Users/dariu/OneDrive/Pulpit/pBa",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;js__zal&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dariu/OneDrive/Pulpit/pBa&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.2.3\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\node01" />
@@ -66,6 +68,7 @@
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\js01" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\js_zal" />
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\js04-lab" />
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\ang02" />
       <recent name="C:\Users\dariu\OneDrive\Pulpit\pBa\node02" />
@@ -332,18 +335,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/ang02/1/task_1.js" />
-        <option value="$PROJECT_DIR$/ang02/1/task_1.js.map" />
-        <option value="$PROJECT_DIR$/ang02/2/task_2.js.map" />
-        <option value="$PROJECT_DIR$/ang02/2/task_2.js" />
-        <option value="$PROJECT_DIR$/ang02/3/task_3.js" />
-        <option value="$PROJECT_DIR$/ang02/3/task_3.js.map" />
-        <option value="$PROJECT_DIR$/ang02/4/task_4.js.map" />
-        <option value="$PROJECT_DIR$/ang02/4/task_4.js" />
-      </list>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="js01" />
