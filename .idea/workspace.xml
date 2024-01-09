@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="update4">
-      <change afterPath="$PROJECT_DIR$/js_zal/scale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poker.js" beforeDir="false" afterPath="$PROJECT_DIR$/js_zal/poker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sudoku.js" beforeDir="false" afterPath="$PROJECT_DIR$/js_zal/sudoku.js" afterDir="false" />
-    </list>
+    <list default="true" id="c9755cd1-fceb-4517-afa6-97e958aabc24" name="Changes" comment="update_9.01" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -330,7 +325,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704740820562</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="update_9.01">
+      <option name="closed" value="true" />
+      <created>1704819361820</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1704819361820</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +360,7 @@
     <MESSAGE value="update2" />
     <MESSAGE value="update3" />
     <MESSAGE value="update4" />
-    <option name="LAST_COMMIT_MESSAGE" value="update4" />
+    <MESSAGE value="update_9.01" />
+    <option name="LAST_COMMIT_MESSAGE" value="update_9.01" />
   </component>
 </project>
