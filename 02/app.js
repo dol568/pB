@@ -1,5 +1,7 @@
+// node colors.js --sentence=123456789
 // node colors.js --sentence=123456789 --style=rainbow
-const colors = require('colors');
+// node colors.js --sentence=123456789 --style=zebra
+const colors = require('colors/safe');
 const yargs = require('yargs');
 
 const argv = yargs
@@ -17,8 +19,8 @@ const argv = yargs
     .argv;
 
 if (!argv.sentence) {
-    console.log('Invalid input for the "sentence" argument.');
-    process.exit(1);
+    console.log("Invalid input for the 'sentence' argument.");
+    process.exit(0);
 }
 
 const sentence = argv.sentence;

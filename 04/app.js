@@ -32,10 +32,11 @@ const getNumberInfo = async (url) => {
     }
 }
 
+const fileName = 'data.json';
+
 (async () => {
-    const filePath = 'data.json';
     try {
-        const responseData = await readFromFile(filePath);
+        const responseData = await readFromFile(fileName);
 
         if (responseData?.number == null || responseData?.filename == null) {
             console.log("File read returned incomplete data");
@@ -44,7 +45,6 @@ const getNumberInfo = async (url) => {
             const numberInfo = await getNumberInfo(apiUrl);
             await writeToFile(responseData.filename, numberInfo);
         }
-
     } catch (err) {
         console.log('An error occurred');
     }

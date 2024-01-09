@@ -1,6 +1,9 @@
 const yargs = require("yargs");
 const {addTodo} = require('./addTodo');
-const {readFile} = require('./readTodos');
+const {readTodos} = require('./readTodos');
+const {removeTodo} = require("./removeTodo");
+
+const fileName = 'data.json';
 
 yargs
     .command({
@@ -14,20 +17,39 @@ yargs
             });
         },
         handler: async (argv) => {
-            await addTodo('data.json', argv.todo);
+            !argv.todo
+                ? console.log("Invalid input for the 'todo' argument.")
+                : await addTodo(fileName, argv.todo);
         }
     })
     .command({
         command: 'lista',
         describe: 'Display all todos',
         handler: async () => {
-            const todos = await readFile('data.json');
-            if (todos != null)
-                console.table(todos)
+            const todos = await readTodos(fileName);
+            todos ?
+                todos.length > 0
+                    ? console.table(todos)
+                    : console.log("List is empty")
+                : null;
+        }
+    })
+    .command({
+        command: 'usun [todo]',
+        describe: 'Remove todo from a list',
+        builder: (yargs) => {
+            yargs.positional('todo', {
+                describe: 'Todo content',
+                type: 'string',
+                demandOption: true
+            });
+        },
+        handler: async (argv) => {
+            !argv.todo
+                ? console.log("Invalid input for the 'todo' argument.")
+                : await removeTodo(fileName, argv.todo);
         }
     })
     .demandCommand(1, 'Please provide a command.')
     .help()
     .argv;
-
-

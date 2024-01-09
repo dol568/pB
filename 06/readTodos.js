@@ -1,14 +1,15 @@
 const fs = require('fs').promises;
 
-const readFile = async (filePath) => {
+const readTodos = async (filePath) => {
     try {
         const data = await fs.readFile(filePath, 'utf-8');
-        console.log('File has been read');
+        console.log('File with todos has been read');
         return JSON.parse(data);
     }
     catch (err) {
-        console.log('Error reading the file');
+        console.log('Error reading todos from file');
+        process.exit(0);
     }
 }
 
-module.exports = {readFile};
+module.exports = {readTodos};

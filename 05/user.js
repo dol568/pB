@@ -7,3 +7,6 @@ const getUser = async (login) => {
 }
 
 module.exports = {getUser};
+
+
+

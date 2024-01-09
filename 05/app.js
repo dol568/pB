@@ -18,19 +18,19 @@ const args = yargs(process.argv)
     .help()
     .argv;
 
-if (!args.login || typeof args.login !== "string") {
-
+if (!args.login) {
     console.log('Invalid input for the "login" argument.');
-    process.exit(1);
-}
-
-if (args.followers !== undefined && typeof args.followers !== "boolean") {
-    console.log('Invalid input for the "followers" argument.');
-    process.exit(1);
+    process.exit(0);
 }
 
 const login = args.login;
 const followers = args.followers;
+
+printError = (err, firstMsg, secondMsg) => {
+    (err.response && err.response.status === 404)
+        ? console.error(`${firstMsg}User with login ${login} not found`)
+        : console.error(secondMsg);
+}
 
 (async (login) => {
     try {
@@ -52,20 +52,17 @@ const followers = args.followers;
                 console.log(`List of repos names:`);
                 repos.forEach((repo, index) => console.log((index + 1) + '. ' + repo.name));
             } else {
-                console.log("No repos found")
+                console.log("No repos found");
             }
-
         } catch (err) {
-            if (err.response && err.response.status === 404) {
-                console.error(`Repos data for user with login ${login} not found`);
-            } else {
-                console.error(`Error in getting repos data for login ${login} from the server:`);
-            }
+            printError(err, 'Repos data for ',
+                `Error in getting repos data for login ${login} from the server`);
         }
 
         if (user?.location != null) {
             try {
                 const weather = await getWeather(user.location);
+
                 if (weather?.weather[0]?.main == null
                     || weather?.weather[0]?.description == null) {
                     console.log("The weather server returned incomplete data");
@@ -75,22 +72,14 @@ const followers = args.followers;
                     console.log(`Description: ${weather.weather[0].description}`)
                 }
             } catch (err) {
-                if (err.response && err.response.status === 404) {
-                    console.error(`Weather data for user with login ${login} not found`);
-                } else {
-                    console.error(`Error in getting weather info for location ${user.location} from the server:`);
-                }
+                printError(err, 'Weather data for ',
+                    `Error in getting weather info for location ${user.location} from the server`);
             }
         } else {
-            console.error(`Username: Server returned incomplete data or user did not specify a username`);
+            console.error(`Location: Server returned incomplete data or user did not specify a location`);
         }
-
-
     } catch (err) {
-        if (err.response && err.response.status === 404) {
-            console.error(`User with login ${login} not found`);
-        } else {
-            console.error(`Error occurred while fetching data for the user with login ${login} from the server:`);
-        }
+        printError(err, '',
+            `Error occurred while fetching data for the user with login ${login} from the server`);
     }
 })(login);
