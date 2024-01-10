@@ -30,12 +30,16 @@ class Sudoku {
     }
 
     solve() {
-        if (this.#helper(0, 0)) {
-            console.log('Solved sudoku:');
-            this.#print();
-        } else {
-            console.log('Could not solve this sudoku puzzle');
-        }
+        if (this.board.length !== 0)
+            if (this.#helper(0, 0)) {
+                console.log('Solved sudoku:');
+                this.#print();
+            } else {
+                console.log('Could not solve this sudoku puzzle');
+            }
+        else
+            console.log('Board cannot be empty');
+
     }
 
     #helper(row, col) {
