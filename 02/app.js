@@ -1,6 +1,7 @@
 // node colors.js --sentence=123456789
 // node colors.js --sentence=123456789 --style=rainbow
 // node colors.js --sentence=123456789 --style=zebra
+
 const colors = require('colors/safe');
 const yargs = require('yargs');
 

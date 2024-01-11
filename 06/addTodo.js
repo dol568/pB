@@ -5,10 +5,10 @@ const addTodo = async (filePath, data) => {
         try {
             await fs.access(filePath);
         } catch (err) {
-            await fs.writeFile(filePath, JSON.stringify([]));
+            await fs.writeFile(filePath, JSON.stringify([]), 'utf-8');
         }
 
-        const todosData = await fs.readFile(filePath);
+        const todosData = await fs.readFile(filePath, 'utf-8');
         const todosJSON = todosData.toString();
         const todos = JSON.parse(todosJSON);
 
@@ -20,7 +20,7 @@ const addTodo = async (filePath, data) => {
             console.log(`Todo '${data}' already exists`);
         } else {
             todos.push(data);
-            await fs.writeFile(filePath, JSON.stringify(todos));
+            await fs.writeFile(filePath, JSON.stringify(todos), 'utf-8');
             console.log(`Todo '${data}' has been added`);
         }
 

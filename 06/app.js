@@ -1,3 +1,7 @@
+// node app.js dodaj "todo1"
+// node app.js lista
+// node app.js usun "todo1"
+
 const yargs = require("yargs");
 const {addTodo} = require('./addTodo');
 const {readTodos} = require('./readTodos');
@@ -27,11 +31,9 @@ yargs
         describe: 'Display all todos',
         handler: async () => {
             const todos = await readTodos(fileName);
-            todos ?
-                todos.length > 0
-                    ? console.table(todos)
-                    : console.log("List is empty")
-                : null;
+            todos?.length > 0
+                ? console.table(todos)
+                : console.log("List is empty")
         }
     })
     .command({

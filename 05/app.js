@@ -1,3 +1,6 @@
+// node app.js --login=octocat
+// node app.js --login=octocat --followers=true
+
 const yargs = require("yargs");
 const {getUser} = require('./user');
 const {getWeather} = require('./weather');

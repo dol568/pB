@@ -1,9 +1,11 @@
+// node app.js
+
 const fs = require('fs').promises;
 const axios = require('axios');
 
 const readFromFile = async (filePath) => {
     try {
-        const data = await fs.readFile(filePath);
+        const data = await fs.readFile(filePath, 'utf-8');
         console.log('File has been read');
         return JSON.parse(data);
     } catch (err) {
@@ -14,7 +16,7 @@ const readFromFile = async (filePath) => {
 
 const writeToFile = async (filePath, data) => {
     try {
-        await fs.writeFile(filePath, JSON.stringify(data));
+        await fs.writeFile(filePath, JSON.stringify(data), 'utf-8');
         console.log('File has been saved');
     } catch (err) {
         console.log('Error writing to the file');
