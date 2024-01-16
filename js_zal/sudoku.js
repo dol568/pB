@@ -1,13 +1,10 @@
 class Sudoku {
     #BOARD_SIZE = 9;
     #DOT_CHAR = '.';
-
-    constructor() {
-        this._board = [];
-    }
+    #board = [];
 
     get board() {
-        return this._board;
+        return this.#board;
     }
 
     set board(newBoard) {
@@ -24,7 +21,7 @@ class Sudoku {
                 }
             }
         }
-        this._board = newBoard;
+        this.#board = newBoard;
         console.log("Unsolved sudoku:")
         this.#print();
     }
@@ -51,7 +48,7 @@ class Sudoku {
         if (row === 9)
             return true;
 
-        if (this.board[row][col] !== this.#DOT_CHAR) {
+        if (this.#board[row][col] !== this.#DOT_CHAR) {
             return this.#helper(row, col + 1);
         }
 
@@ -59,20 +56,20 @@ class Sudoku {
             let char = String(i);
             if (!this.#isValid(row, col, char))
                 continue;
-            this.board[row][col] = char;
+            this.#board[row][col] = char;
             if (this.#helper(row, col + 1)) {
                 return true;
             }
-            this.board[row][col] = this.#DOT_CHAR;
+            this.#board[row][col] = this.#DOT_CHAR;
         }
         return false;
     }
 
     #isValid(row, col, cur) {
         for (let i = 0; i < this.#BOARD_SIZE; i++) {
-            if (this.board[row][i] === cur)
+            if (this.#board[row][i] === cur)
                 return false;
-            if (this.board[i][col] === cur)
+            if (this.#board[i][col] === cur)
                 return false;
         }
 
@@ -81,7 +78,7 @@ class Sudoku {
 
         for (let i = rowBorder[0]; i <= rowBorder[1]; i++) {
             for (let j = colBorder[0]; j <= colBorder[1]; j++) {
-                if (this.board[i][j] === cur)
+                if (this.#board[i][j] === cur)
                     return false;
             }
         }
@@ -105,16 +102,16 @@ class Sudoku {
 
     #print() {
         console.log('-------------------------------')
-        for (let i = 0; i < this.board.length; i++) {
+        for (let i = 0; i < this.#board.length; i++) {
             if (i !== 0 && i % 3 === 0)
                 console.log('-------------------------------')
 
             let string = '';
-            for (let j = 0; j < this.board[i].length; j++) {
+            for (let j = 0; j < this.#board[i].length; j++) {
                 if (j % 3 === 0)
                     string += '|';
 
-                string += ' ' + this.board[i][j] + ' ';
+                string += ' ' + this.#board[i][j] + ' ';
             }
             console.log(string + '|')
         }
