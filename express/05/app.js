@@ -28,7 +28,11 @@ app.post("/users", (req, res) => {
         new Response(HttpStatus.BAD_REQUEST.code, HttpStatus.BAD_REQUEST.status, `Niepoprawne lub brakujace parametry`)
       );
   } else {
-    const newUser = { id: users.length + 1, firstName, lastName, email };
+    let userIds = users.map(u => u.id);
+    let maxUserId = Math.max(...userIds);
+    let newUserId = maxUserId + 1;
+
+    const newUser = { id: newUserId, firstName, lastName, email };
     users.push(newUser);
     res
       .status(HttpStatus.CREATED.code)
@@ -126,7 +130,11 @@ app.post("/posts", (req, res) => {
           new Response(HttpStatus.BAD_REQUEST.code, HttpStatus.BAD_REQUEST.status, `Niepoprawne lub brakujace dane`)
         );
     } else {
-      const newPost = { id: posts.length + 1, title, body };
+      let postIds = posts.map(u => u.id);
+      let maxPostId = Math.max(...postIds);
+      let newPostId = maxPostId + 1;
+
+      const newPost = { id: newPostId, title, body };
       posts.push(newPost);
       res
         .status(HttpStatus.CREATED.code)

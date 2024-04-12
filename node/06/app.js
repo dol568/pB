@@ -1,6 +1,8 @@
 const http = require("http");
 
 const app = http.createServer((req, res) => {
+  let body = '';
+  let statusCode;
   const urlObject = new URL(`http://${req.headers.host}${req.url}`);
 
   if (urlObject.searchParams.has("a") && urlObject.searchParams.has("b")) {
@@ -8,17 +10,19 @@ const app = http.createServer((req, res) => {
     const b = Number(urlObject.searchParams.get("b"));
 
     if (isNaN(a) || isNaN(b)) {
-      res.writeHead(400, { "Content-type": "text/plain" });
-      res.write("parametry powinny być liczbami");
+      body = "parametry powinny być liczbami";
+      statusCode = 400;
     } else {
       const result = a * b;
-      res.writeHead(200, { "Content-type": "text/plain" });
-      res.write(`Wynik mnozenia = ${result}`);
+      body = `Wynik mnozenia = ${result}`;
+      statusCode = 200;
     }
   } else {
-    res.writeHead(400, { "Content-type": "text/plain" });
-    res.write("niepoprawna ilosc parametrow");
+    body = "niepoprawna ilosc parametrow";
+    statusCode = 400;
   }
+  res.writeHead(statusCode, {'Content-type' : 'text/plain;charset=utf-8'})
+  res.write(body);
   res.end();
 });
 
