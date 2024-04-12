@@ -12,7 +12,10 @@ const createPost = (req, res) => {
       .status(HttpStatus.BAD_REQUEST.code)
       .send(new Response(HttpStatus.BAD_REQUEST.code, HttpStatus.BAD_REQUEST.status, `Niepoprawne lub brakujace dane`));
   } else {
-    const newPost = { id: posts.length + 1, title, body };
+    let postIds = posts.map(u => u.id);
+    let maxPostId = Math.max(...postIds);
+    let newPostId = maxPostId + 1;
+    const newPost = { id: newPostId, title, body };
     posts.push(newPost);
     res
       .status(HttpStatus.CREATED.code)
